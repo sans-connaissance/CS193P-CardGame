@@ -20,45 +20,39 @@ struct ContentView: View {
                 ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
                     CardView(content: emoji)
                 }
-            }
+            }.foregroundColor(.red)
+            
+            Spacer()
             HStack {
                 
                 remove
                 Spacer()
                 add
                 
-                
             }.padding(.horizontal)
+            .font(.largeTitle)
+           
         }
         .padding(.horizontal)
-        .foregroundColor(.red)
+        
         
     }
     //whoa -- this is amazing
     var remove: some View {
-        Button(action: {
-            emojiCount -= 1
-        }, label: {
-            
-            VStack {
-                Text("Remove")
-                Text("Card")
+        Button{ if emojiCount > 1 {
+                emojiCount -= 1
             }
-            
-        })
+        } label: {Image(systemName: "minus.circle")}
     }
     
     var add: some View {
-        Button(action: {
-            emojiCount += 1
-        }, label: {
-            VStack {
-                Text("Add")
-                Text("Card")
+        Button{if emojiCount < 24 {
+                emojiCount += 1
             }
-            
-        })
+        } label: {Image(systemName: "plus.circle")}
     }
+    
+    
 }
 
 
