@@ -10,15 +10,20 @@ import SwiftUI
 struct ContentView: View {
     
     //for homework maybe make this an @State variable
-    var emojis = ["✈️","🚀","🚗","🚜", "🛺", "🛻", "🛩", "🚤", "🛫", "⛴","🛵", "🧨","🚛","🚲","🚒","🏎","🚑","🚓","🚐","🏍","🚇","⛴","🚆","🚞"]
+    @State var emojis = ["✈️","🚀","🚗","🚜", "🛺", "🛻", "🛩", "🚤", "🛫", "⛴","🛵", "🧨","🚛","🚲","🚒","🏎","🚑","🚓","🚐","🏍","🚇","⛴","🚆","🚞"]
+    
+    var vehicleTheme = ["✈️","🚀","🚗","🚜", "🛺", "🛻", "🛩", "🚤", "🛫", "⛴","🛵", "🧨","🚛","🚲","🚒","🏎","🚑","🚓","🚐","🏍","🚇","⛴","🚆","🚞"]
+    var techTheme = ["📱", "🎚", "📞", "☎️", "🖥", "🕹", "🔌", "🖱", "⌨️", "📽"]
+    var sportTheme = ["⚽️", "🏈", "⛳️", "⛸", "🥍", "🥏", "🏸", "🥎", "🏉", "🏹"]
     
     @State var emojiCount = 6
     
     var body: some View {
         VStack {
+            Text("Memorize")
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                    ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
+                    ForEach(emojis[0..<emojis.count].shuffled(), id: \.self) { emoji in
                         CardView(content: emoji).aspectRatio(2/3, contentMode: .fit)
                     }
                 }.foregroundColor(.red)
@@ -26,16 +31,61 @@ struct ContentView: View {
             Spacer()
             HStack {
                 
-                remove
+                // remove
+                vehicleThemeButton
                 Spacer()
-                add
+                techThemeButton
+                Spacer()
+                sportThemeButton
+                //  add
                 
-            }.padding(.horizontal)
-                .font(.largeTitle)
+            }
+            .font(.body)
+            
             
         }
         .padding(.horizontal)
+        .font(.largeTitle)
         
+        
+    }
+    
+    var vehicleThemeButton: some View {
+        Button {
+            emojis = vehicleTheme
+        } label: {
+            VStack {
+                Image(systemName: "car")
+                Text("Vechicles")
+
+            }
+        }
+        
+    }
+    
+    var techThemeButton: some View {
+        Button {
+            emojis = techTheme
+        } label: {
+            VStack {
+                Image(systemName: "gamecontroller")
+                Text("Games")
+
+            }
+        }
+        
+    }
+    
+    var sportThemeButton: some View {
+        Button {
+            emojis = sportTheme
+        } label: {
+            VStack {
+                Image(systemName: "sportscourt")
+                Text("Sports")
+
+            }
+        }
         
     }
     //whoa -- this is amazing
