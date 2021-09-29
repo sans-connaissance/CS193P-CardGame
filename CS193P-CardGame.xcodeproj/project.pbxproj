@@ -11,6 +11,7 @@
 		417084C127010EA000329F64 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417084C027010EA000329F64 /* ContentView.swift */; };
 		417084C327010EA200329F64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 417084C227010EA200329F64 /* Assets.xcassets */; };
 		417084C627010EA200329F64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 417084C527010EA200329F64 /* Preview Assets.xcassets */; };
+		41EB5F8F270406AC0090235B /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EB5F8E270406AC0090235B /* MemoryGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		417084C227010EA200329F64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		417084C527010EA200329F64 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		417084C727010EA200329F64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41EB5F8E270406AC0090235B /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +54,9 @@
 		417084BD27010EA000329F64 /* CS193P-CardGame */ = {
 			isa = PBXGroup;
 			children = (
+				41EB5F90270406B90090235B /* Model */,
+				41EB5F91270406D40090235B /* View */,
 				417084BE27010EA000329F64 /* CS193P_CardGameApp.swift */,
-				417084C027010EA000329F64 /* ContentView.swift */,
 				417084C227010EA200329F64 /* Assets.xcassets */,
 				417084C727010EA200329F64 /* Info.plist */,
 				417084C427010EA200329F64 /* Preview Content */,
@@ -67,6 +70,22 @@
 				417084C527010EA200329F64 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		41EB5F90270406B90090235B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				41EB5F8E270406AC0090235B /* MemoryGame.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		41EB5F91270406D40090235B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				417084C027010EA000329F64 /* ContentView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41EB5F8F270406AC0090235B /* MemoryGame.swift in Sources */,
 				417084C127010EA000329F64 /* ContentView.swift in Sources */,
 				417084BF27010EA000329F64 /* CS193P_CardGameApp.swift in Sources */,
 			);
