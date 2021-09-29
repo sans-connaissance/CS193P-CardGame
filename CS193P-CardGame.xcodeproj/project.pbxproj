@@ -55,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				41EB5F90270406B90090235B /* Model */,
+				41EB5F922704B1020090235B /* View Model */,
 				41EB5F91270406D40090235B /* View */,
 				417084BE27010EA000329F64 /* CS193P_CardGameApp.swift */,
 				417084C227010EA200329F64 /* Assets.xcassets */,
@@ -86,6 +87,13 @@
 				417084C027010EA000329F64 /* ContentView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		41EB5F922704B1020090235B /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

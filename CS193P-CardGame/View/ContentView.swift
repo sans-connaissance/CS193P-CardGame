@@ -31,13 +31,11 @@ struct ContentView: View {
             Spacer()
             HStack {
                 
-                // remove
                 vehicleThemeButton
                 Spacer()
                 techThemeButton
                 Spacer()
                 sportThemeButton
-                //  add
                 
             }
             .font(.body)
