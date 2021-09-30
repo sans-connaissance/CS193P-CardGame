@@ -22,7 +22,7 @@ class EmojiMemoryGame {
    
     
     var cards: Array<MemoryGame<String>.Card> {
-        return model.cards
+        model.cards
     }
     
 }
