@@ -34,6 +34,10 @@ class EmojiMemoryGame: ObservableObject {
     
     private var theme: Theme
     
+    var themeName: String {
+        return theme.name
+    }
+    
     var cards: Array<MemoryGame<String>.Card>{
         return model.cards
     }
