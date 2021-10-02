@@ -63,6 +63,10 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
     
+    var score: Int {
+        return model.score
+    }
+    
     var cards: Array<MemoryGame<String>.Card>{
         return model.cards
     }
