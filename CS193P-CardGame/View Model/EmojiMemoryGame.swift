@@ -15,17 +15,17 @@ class EmojiMemoryGame: ObservableObject {
         model = EmojiMemoryGame.createMemoryGame(theme: theme)
     }
     
-
+    
     static var themes: [Theme] = [
-    Theme(name: "vehicleTheme", emojis: ["✈️","🚀","🚗","🚜", "🛺", "🛻", "🛩", "🚤", "🛫", "⛴","🛵", "🧨","🚛","🚲","🚒","🏎","🚑","🚓","🚐","🏍","🚇","⛴","🚆","🚞"], pairs: 6, color: "Red"),
-    Theme(name: "techTheme", emojis: ["📱", "🎚", "📞", "☎️", "🖥", "🕹", "🔌", "🖱", "⌨️", "📽"], pairs: 20, color: "Blue"),
-    Theme(name: "sportTheme", emojis: ["⚽️", "🏈", "⛳️", "⛸", "🥍", "🥏", "🏸", "🥎", "🏉", "🏹"], pairs: 10, color: "Yellow")
+        Theme(name: "vehicleTheme", emojis: ["✈️","🚀","🚗","🚜", "🛺", "🛻", "🛩", "🚤", "🛫", "⛴","🛵", "🧨","🚛","🚲","🚒","🏎","🚑","🚓","🚐","🏍","🚇","⛴","🚆","🚞"], pairs: 6, color: "Red"),
+        Theme(name: "techTheme", emojis: ["📱", "🎚", "📞", "☎️", "🖥", "🕹", "🔌", "🖱", "⌨️", "📽"], pairs: 20, color: "Blue"),
+        Theme(name: "sportTheme", emojis: ["⚽️", "🏈", "⛳️", "⛸", "🥍", "🥏", "🏸", "🥎", "🏉", "🏹"], pairs: 10, color: "Yellow")
         
     ]
     
     static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
         MemoryGame<String>(numberOfPairsOfCards: theme.pairs) { pairIndex in
-
+            
             return theme.emojis[pairIndex]
         }
     }
@@ -35,13 +35,24 @@ class EmojiMemoryGame: ObservableObject {
     private var theme: Theme
     
     var themeName: String {
-        return theme.name
+        
+        switch theme.name {
+        case "vehicleTheme":
+            return "Vehicles"
+        case "sportTheme":
+            return "Sports"
+        case "techTheme":
+            return "Technology"
+        default:
+            return "D'oh!"
+        }
+        
     }
     
     var cards: Array<MemoryGame<String>.Card>{
         return model.cards
     }
-   
+    
     
     //MARK: - Intent(s)
     
