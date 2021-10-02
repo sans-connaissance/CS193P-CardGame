@@ -27,7 +27,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .foregroundColor(.red)
+            .foregroundColor(viewModel.themeColor)
             .padding(.horizontal)
             .font(.largeTitle)
             newGame
