@@ -32,7 +32,11 @@ class EmojiMemoryGame: ObservableObject {
     
     @Published private var model: MemoryGame<String> = createMemoryGame(theme: themes[1])
     
-    private(set) var theme: Theme
+    private var theme: Theme
+    
+    var cards: Array<MemoryGame<String>.Card>{
+        return model.cards
+    }
    
     
     //MARK: - Intent(s)
