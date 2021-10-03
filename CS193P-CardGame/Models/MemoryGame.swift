@@ -12,23 +12,24 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
     private(set) var score = 0
     
     private var indexOfTheOneAndOnlyFaceUpCard: Int? {
-        var faceUpCardIndices = [Int]()
+        get {cards.indices.filter({ cards[$0].isFaceUp}).oneAndOnly}
         
-        for index in cards.indices {
-            if cards[index].isFaceUp {
-                faceUpCardIndices.append(index)
+        set {
+            for index in cards.indices {
+                if index != newValue {
+                    cards[index].isFaceUp = false
+                    cards[index].hasAlreadyBeenSeen = true
+                } else {
+                    cards[index].isFaceUp = true
+                }
+                
             }
-        }
-        
-        if faceUpCardIndices.count == 1 {
-            return faceUpCardIndices.first
-        } else {
-            return nil
+            
         }
     }
     
     mutating func choose(_ card: Card) {
-
+        
         if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
            !cards[chosenIndex].isFaceUp,
            !cards[chosenIndex].isMatched
@@ -47,13 +48,7 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
                 cards[chosenIndex].isFaceUp = true
                 
             } else {
-                for index in cards.indices {
-                    if cards[index].isFaceUp {
-                        cards[index].isFaceUp = false
-                        cards[index].hasAlreadyBeenSeen = true
-                    }
-                    
-                }
+                
                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
             }
             
@@ -81,7 +76,16 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
         var hasAlreadyBeenSeen = false
         let content: CardContent
     }
-    
-    
-    
+
+}
+
+extension Array {
+    var oneAndOnly: Element? {
+//self refers to the Array
+        if self.count == 1 {
+            return self.first
+        } else {
+            return nil
+        }
+    }
 }
