@@ -9,6 +9,8 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
     
+    typealias Card = MemoryGame<String>.Card
+    
     init() {
         theme = EmojiMemoryGame.themes.randomElement()!
         theme.emojis.shuffle()
@@ -30,7 +32,7 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
     
-    @Published private var model: MemoryGame<String> = createMemoryGame(theme: themes[1])
+    @Published private var model = createMemoryGame(theme: themes[1])
     
     private var theme: Theme
     
@@ -67,14 +69,14 @@ class EmojiMemoryGame: ObservableObject {
         return model.score
     }
     
-    var cards: Array<MemoryGame<String>.Card>{
+    var cards: [Card]{
         return model.cards
     }
     
     
     //MARK: - Intent(s)
     
-    func choose(_ card: MemoryGame<String>.Card) {
+    func choose(_ card: Card) {
         model.choose(card)
     }
     

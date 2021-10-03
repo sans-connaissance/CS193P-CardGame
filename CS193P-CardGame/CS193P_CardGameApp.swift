@@ -14,7 +14,7 @@ struct CS193P_CardGameApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: game)
+            EmojiMemoryGameView(gameVM: game)
         }
     }
 }
