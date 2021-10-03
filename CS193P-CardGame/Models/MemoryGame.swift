@@ -8,24 +8,13 @@
 import Foundation
 
 struct MemoryGame <CardContent> where CardContent: Equatable {
+   
     private(set) var cards: Array<Card>
     private(set) var score = 0
     
     private var indexOfTheOneAndOnlyFaceUpCard: Int? {
         get {cards.indices.filter({ cards[$0].isFaceUp}).oneAndOnly}
-        
-        set {
-            for index in cards.indices {
-                if index != newValue {
-                    cards[index].isFaceUp = false
-                    cards[index].hasAlreadyBeenSeen = true
-                } else {
-                    cards[index].isFaceUp = true
-                }
-                
-            }
-            
-        }
+        set {cards.indices.forEach{ cards[$0].isFaceUp = ($0 == newValue)}}
     }
     
     mutating func choose(_ card: Card) {
@@ -39,21 +28,22 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
                     score += 2
-                }else {
+                    
+                } else {
                     if cards[chosenIndex].hasAlreadyBeenSeen || cards[potentialMatchIndex].hasAlreadyBeenSeen {
                         score -= 1
                     }
+                   
                 }
-                
                 cards[chosenIndex].isFaceUp = true
-                
+                cards[chosenIndex].hasAlreadyBeenSeen = true
             } else {
                 
                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
             }
-            
-            cards[chosenIndex].isFaceUp.toggle()
+ 
         }
+        
     }
     
     
