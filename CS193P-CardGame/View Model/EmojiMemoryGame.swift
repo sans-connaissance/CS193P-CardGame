@@ -16,14 +16,14 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     
-    static var themes: [Theme] = [
+   private static var themes: [Theme] = [
         Theme(name: "vehicleTheme", emojis: ["✈️","🚀","🚗","🚜", "🛺", "🛻", "🛩", "🚤", "🛫", "⛴","🛵", "🧨","🚛","🚲","🚒","🏎","🚑","🚓","🚐","🏍","🚇","⛴","🚆","🚞"], pairs: 6, color: "Red"),
         Theme(name: "techTheme", emojis: ["📱", "🎚", "📞", "☎️", "🖥", "🕹", "🔌", "🖱", "⌨️", "📽"], pairs: 20, color: "Blue"),
         Theme(name: "sportTheme", emojis: ["⚽️", "🏈", "⛳️", "⛸", "🥍", "🥏", "🏸", "🥎", "🏉", "🏹"], pairs: 10, color: "Yellow")
         
     ]
     
-    static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
+   private static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
         MemoryGame<String>(numberOfPairsOfCards: theme.pairs) { pairIndex in
             
             return theme.emojis[pairIndex]
@@ -78,7 +78,7 @@ class EmojiMemoryGame: ObservableObject {
         model.choose(card)
     }
     
-    func newGame() {
+   func newGame() {
         theme = EmojiMemoryGame.themes.randomElement()!
         theme.emojis.shuffle()
         model = EmojiMemoryGame.createMemoryGame(theme: theme)

@@ -9,10 +9,11 @@ import Foundation
 
 struct Theme {
     
-    var name: String
+    private(set) var name: String
+    private(set) var pairs: Int
+    private(set) var color: String
+    
     var emojis: [String]
-    var pairs: Int
-    var color: String
     
     init(name: String, emojis: [String], pairs: Int, color: String) {
         
