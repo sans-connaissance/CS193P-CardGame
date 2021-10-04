@@ -16,30 +16,41 @@ struct CardView: View {
     }
     
     var body: some View {
-        
-        ZStack{
-            //local variables are cool
-            let shape = RoundedRectangle(cornerRadius: 20)
-            if card.isFaceUp {
-                shape.fill().foregroundColor(.white)
-                shape.strokeBorder(lineWidth: 3)
-                Text(card.content).font(.largeTitle)
-                
-            } else if card.isMatched {
-                shape.opacity(0)
-            } else {
-                shape.fill()
+        GeometryReader { geometry in
+            ZStack{
+                //local variables are cool
+                let shape = RoundedRectangle(cornerRadius: DrawingConstants.corderRadius)
+                if card.isFaceUp {
+                    shape.fill().foregroundColor(.white)
+                    shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
+                    Text(card.content).font(font(in: geometry.size))
+                } else if card.isMatched {
+                    shape.opacity(0)
+                } else {
+                    shape.fill()
+                }
             }
         }
     }
+    
+    private func font(in size: CGSize) -> Font {
+        Font.system(size: min(size.width, size.height) * DrawingConstants.fontScale)
+    }
+    
+    private struct DrawingConstants {
+        static let corderRadius: CGFloat = 20
+        static let lineWidth: CGFloat = 3
+        static let fontScale: CGFloat = 0.8
+        
+    }
 }
 
-//struct CardView_Previews: PreviewProvider {
-//    
-//    let card = EmojiMemoryGame.Card
-//    
-//    static var previews: some View {
-//        
-//        CardView(card: card.init(id: 2, content: "") )
-//    }
-//}
+struct CardView_Previews: PreviewProvider {
+    
+    let card = EmojiMemoryGame.Card.self
+    
+    static var previews: some View {
+        
+        CardView(EmojiMemoryGame.Card(id: 1, isFaceUp: true, isMatched: false, hasAlreadyBeenSeen: false, content: "8"))
+    }
+}
