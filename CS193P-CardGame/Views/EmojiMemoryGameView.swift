@@ -19,16 +19,8 @@ struct EmojiMemoryGameView: View {
             Text("\(gameVM.score)")
             
             AspectVGrid(items: gameVM.cards, aspectRatio: 2/3, content: { card in
-                if card.isMatched && !card.isFaceUp {
-                    Rectangle().opacity(0)
-                } else {
-                    CardView(card)
-                        .padding(4)
-                        .onTapGesture {
-                            gameVM.choose(card)
-                        }
-                }
                 
+                cardView(for: card)
             })
                 .foregroundColor(gameVM.themeColor)
                 .padding(.horizontal)
@@ -46,6 +38,20 @@ struct EmojiMemoryGameView: View {
             gameVM.newGame()
         } label: {
             Text("New Game").font(.largeTitle)
+        }
+    }
+    
+    @ViewBuilder
+    private func cardView(for card: EmojiMemoryGame.Card) -> some View {
+        
+        if card.isMatched && !card.isFaceUp {
+            Rectangle().opacity(0)
+        } else {
+            CardView(card)
+                .padding(4)
+                .onTapGesture {
+                    gameVM.choose(card)
+                }
         }
     }
     
