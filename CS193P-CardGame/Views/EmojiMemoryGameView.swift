@@ -19,16 +19,20 @@ struct EmojiMemoryGameView: View {
             Text("\(gameVM.score)")
             
             AspectVGrid(items: gameVM.cards, aspectRatio: 2/3, content: { card in
-                CardView(card)
-                    .padding(4)
-                    .onTapGesture {
-                        gameVM.choose(card)
-                    }
+                if card.isMatched && !card.isFaceUp {
+                    Rectangle().opacity(0)
+                } else {
+                    CardView(card)
+                        .padding(4)
+                        .onTapGesture {
+                            gameVM.choose(card)
+                        }
+                }
                 
             })
-            .foregroundColor(gameVM.themeColor)
-            .padding(.horizontal)
-            .font(.largeTitle)
+                .foregroundColor(gameVM.themeColor)
+                .padding(.horizontal)
+                .font(.largeTitle)
             newGame
         }
     }
