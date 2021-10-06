@@ -17,17 +17,22 @@ struct EmojiMemoryGameView: View {
         VStack {
             Text(gameVM.themeName).font(.largeTitle)
             Text("\(gameVM.score)")
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                    ForEach(gameVM.cards) { card in
-                        CardView(card)
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                gameVM.choose(card)
-                            }
+//            ScrollView {
+//                LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
+//                    ForEach(gameVM.cards) { card in
+            
+            AspectVGrid(items: gameVM.cards, aspectRatio: 2/3, content: { card in
+                CardView(card)
+                    .aspectRatio(2/3, contentMode: .fit)
+                    .onTapGesture {
+                        gameVM.choose(card)
                     }
-                }
-            }
+                
+            })
+
+//                    }
+//                }
+//            }
             .foregroundColor(gameVM.themeColor)
             .padding(.horizontal)
             .font(.largeTitle)
