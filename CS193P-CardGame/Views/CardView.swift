@@ -23,7 +23,7 @@ struct CardView: View {
                 if card.isFaceUp {
                     shape.fill().foregroundColor(.white)
                     shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
-                    Circle()
+                    Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 110-90))
                         .foregroundColor(.blue)
                         .padding(DrawingConstants.circlePadding)
                         .opacity(DrawingConstants.circleOpacity)
@@ -38,7 +38,7 @@ struct CardView: View {
     }
     
     private func font(in size: CGSize) -> Font {
-        Font.system(size: min(size.width, size.height) * DrawingConstants.fontScale)
+        Font.system(size: min(size.width, size.height) * DrawingConstants.fontScale - 5)
     }
     
     private struct DrawingConstants {

@@ -63,9 +63,9 @@ struct EmojiMemoryGameView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        EmojiMemoryGameView(gameVM: game)
+        game.choose(game.cards.first!)
+        return EmojiMemoryGameView(gameVM: game)
             .preferredColorScheme(.light)
-        EmojiMemoryGameView(gameVM: game)
-            .preferredColorScheme(.dark)
+
     }
 }
